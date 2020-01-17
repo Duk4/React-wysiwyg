@@ -6,6 +6,15 @@
     sans-serif;
 }
 
+.editor {
+    margin-top: 3rem;
+}
+
+h1 {
+    margin: 0 auto 3rem auto;
+    text-align: center;
+}
+
 .rdw-editor-wrapper {
     width: 60%;
     margin: 0 auto;
@@ -15,4 +24,12 @@
     min-height: 10rem;
     background-color: #00000015;
     padding: 0 1rem;
+}
+
+textarea {
+    width: 60%;
+    margin: 3rem 20%;
+    min-height: 10rem;
+    text-align: center;
+    background-color: #00000015;
 }

@@ -1,14 +1,14 @@
-import React from 'react';
-import { EditorState } from 'draft-js';
+import React, { Component } from 'react';
+import { EditorState, convertToRaw } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 import '../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editorState: EditorState.createEmpty(),
-    };
+
+class EditorConvertToHTML extends Component {
+  state = {
+    editorState: EditorState.createEmpty(),
   }
 
   onEditorStateChange = (editorState) => {
@@ -20,12 +20,22 @@ class App extends React.Component {
   render() {
     const { editorState } = this.state;
     return (
-      <div className="App">
-        <Editor editorState={editorState} onEditorStateChange={this.onEditorStateChange} />
-        <div className="text"></div>
+      <div className="editor">
+        <h1>React wysiwyg</h1>
+        <Editor
+          editorState={editorState}
+          wrapperClassName="wrapper-class"
+          editorClassName="editor-class"
+          toolbarClassName="toolbar-class"
+          onEditorStateChange={this.onEditorStateChange}
+        />
+        <textarea
+          disabled
+          value={draftToHtml(convertToRaw(editorState.getCurrentContent()))}
+        />
       </div>
     );
   }
 }
 
-export default App;
+export default EditorConvertToHTML;
