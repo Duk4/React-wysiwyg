@@ -8,3 +8,7 @@ npx create-react-app my-app
 ```bash
 npm install --save react-draft-wysiwyg draft-js
 ```
+### To start application
+```bash
+npm start
+```
